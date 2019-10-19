@@ -1,5 +1,6 @@
 package Asg1;
 
+//class to create graph objects
 public class Graph {
 	
 	int size;
@@ -12,7 +13,7 @@ public class Graph {
 		this.matrix = new int[10][10];
 	}//end of default constructor
 	
-	//constructor with size and input lines as arguments
+	//constructor with size and adjacency matrix as arguments
 	public Graph(int size, int[][] matrix) {
 		
 		this.size = size;
