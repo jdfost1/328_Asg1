@@ -26,7 +26,9 @@ public class GraphList {
 		BufferedReader bufferedReader;
 		String firstChar;// first char read in to tell us the number of rows in graph/adjacency matrix
 		
-		int counter =0; //counter for testing/printing
+		//these counter variables are used to print a specified number of graphs in the graph list for testing 
+		int counter = 0; 
+		int maxCounter = 10;//set number of graphs to print from list of graphs
 
 		try {
 			// create file reader object with input file
@@ -39,7 +41,7 @@ public class GraphList {
 			// and then reads lines
 			while ((firstChar = bufferedReader.readLine()) != null) {
 				int matrixSize = Integer.parseInt(firstChar);
-				if(counter<5) {System.out.println("Matrix Size: " + firstChar);}
+				if(counter < maxCounter) {System.out.println("Matrix Size: " + firstChar);}
 
 				// if there is 0 rows.. then we do not need to read in any lines
 				if (matrixSize == 0) {
@@ -52,22 +54,22 @@ public class GraphList {
 
 				for (int j = 0; j < matrixSize; j++) {
 					String line = bufferedReader.readLine().replaceAll("\\s+", "");
-					if(counter < 5) {System.out.println("\nLine " + (j + 1) + ": " + line);}
+					if(counter < maxCounter) {System.out.println("\nLine " + (j + 1) + ": " + line);}
 					for (int i = 0; i < matrixSize; i++) {
 
 						adjacencyMatrix[j][i] = Integer.parseInt(line.charAt(i) + "");
 						
 						//only print the matrixes of first 5 for testing
-						if(counter < 5)
+						if(counter < maxCounter)
 						System.out.println("Filled in cell [" + j + "]" + "[" + i + "] in matrix with value of "
 								+ adjacencyMatrix[j][i]);
 
 					} // end of inner for loop
 				} // end of outer for loop
-				if(counter<5) {System.out.println("Filling of matrix complete \n\n");}
+				if(counter< maxCounter) {System.out.println("Filling of matrix complete \n\n");}
 				counter++;
 
-				// create new graph with adjacency matrix parsed from input file
+				// create new graph with adjacency matrix parsed from input file and add to list of graphs
 				this.graphList.add(new Graph(matrixSize, adjacencyMatrix));
 
 			} // end of while loop
