@@ -10,7 +10,7 @@ import java.util.List;
 
 public class GraphList {
 	
-	
+	//list that contains all the graphs
 	List<Graph> graphList;
 	
 	//constructor
@@ -19,28 +19,32 @@ public class GraphList {
 				this.graphList = new ArrayList<Graph>();
 				parseGraphs(filename);
 		
-	}
+	}//end of constructor
 	
 	//method to parse input file into an array list of graphs
 	public void parseGraphs(String filename) throws NumberFormatException, IOException {
 		BufferedReader bufferedReader;
-		String firstChar;// first char read in to tell us the number of rows in graph/adjacency matrix
+		String firstChar;// first char read in to tell us the number of rows/cols in graph/adjacency matrix
 		
 		//these counter variables are used to print a specified number of graphs in the graph list for testing 
 		int counter = 0; 
-		int maxCounter = 10;//set number of graphs to print from list of graphs
+		int maxCounter = 5;//set number of graphs to print from list of graphs
 
 		try {
 			// create file reader object with input file
 			FileReader reader = new FileReader(new File(filename));
 
-			// use buffered reader object efficiently read characters,lines, and arrays
+			// use buffered reader object to help efficiently read in characters and lines from input file
 			bufferedReader = new BufferedReader(reader);
 
 			// while loop to read in first number that lets us know how many rows in graph
-			// and then reads lines
+			// and then reads lines to set values in graph
 			while ((firstChar = bufferedReader.readLine()) != null) {
+				
+				//first character read in should represent the size of the rows & cols for the symmetric adjacency matrix
 				int matrixSize = Integer.parseInt(firstChar);
+				
+				//used for testing
 				if(counter < maxCounter) {System.out.println("Matrix Size: " + firstChar);}
 
 				// if there is 0 rows.. then we do not need to read in any lines
@@ -52,6 +56,8 @@ public class GraphList {
 				// create array of adjacency matrix to help create graph
 				int[][] adjacencyMatrix = new int[matrixSize][matrixSize];
 
+				
+				//for loop to read input file and parse into graph
 				for (int j = 0; j < matrixSize; j++) {
 					String line = bufferedReader.readLine().replaceAll("\\s+", "");
 					if(counter < maxCounter) {System.out.println("\nLine " + (j + 1) + ": " + line);}
@@ -66,6 +72,9 @@ public class GraphList {
 
 					} // end of inner for loop
 				} // end of outer for loop
+							
+				
+				//print method for testing only
 				if(counter< maxCounter) {System.out.println("Filling of matrix complete \n\n");}
 				counter++;
 
@@ -82,4 +91,4 @@ public class GraphList {
 		} // end of try/catch block
 	}//end of parseGraphs method
 
-}
+}//end of class
