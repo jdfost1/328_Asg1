@@ -13,6 +13,7 @@ public class GraphList {
 	//list that contains all the graphs
 	List<Graph> graphList;
 	
+	
 	//constructor
 	public GraphList(String filename) throws NumberFormatException, IOException {
 		// create array list of graphs so that we can read in and store all of the graphs from input file
