@@ -23,9 +23,26 @@ public class Graph {
 	public Graph(int size, int[][] matrix) {
 
 		this.size = size;
-		this.matrix = new int[size][size];
+		this.matrix = matrix;
 		this.time = 0;
 	}// end of constructor
+	
+	//getters and setters
+	public void setMatrix(int[][] matrix) {
+		this.matrix = matrix;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public int[][] getMatrix() {
+		return matrix;
+	}
 
 	// getters and setters for time
 	public long getTime() {
@@ -34,6 +51,16 @@ public class Graph {
 
 	public void setTime(long time) {
 		this.time = time;
+	}
+	
+	//method for printing the matrix
+	public void printMatrix() {
+		for (int i=0; i<size; i++) {
+			for (int j = 0; j < size; j++) {
+				System.out.print(matrix[i][j]);
+			}
+			System.out.println();
+		}
 	}
 
 }// end of class

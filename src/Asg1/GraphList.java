@@ -90,5 +90,43 @@ public class GraphList {
 			System.out.println("File Not Found");
 		} // end of try/catch block
 	}//end of parseGraphs method
+	
+	//static method which will invert all graphs in the list
+	//returns message if list is empty
+	public List<Graph> invertGraphs() {
+		
+		//lets user know no graphs were inverted
+		if (graphList.size()==0) {
+			System.out.println("No graphs to invert");
+		}
+		
+		//for loop that goes through each graph of the list
+		for (int i = 0; i< graphList.size(); i++) {
+			Graph temp = graphList.get(i);
+			
+			int[][] matrix = graphList.get(i).getMatrix();
+			int size = graphList.get(i).getSize();
+			
+			//for loop that inverts matrix
+			for (int j = 0; j < size; j++) {
+				for (int k = 0; k < size; k++) {
+					if( j == k) matrix[j][k] = 1;					
+					else if(matrix[j][k] == 0) matrix[j][k] = 1;
+					else matrix[j][k] = 0;
+				}
+			}
+			
+			graphList.get(i).setMatrix(matrix);
+			
+		}
+		
+		
+		
+		return graphList;
+	}
+
+	public List<Graph> getGraphList() {
+		return graphList;
+	}
 
 }//end of class
