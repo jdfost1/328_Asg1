@@ -70,6 +70,8 @@ public class solve3CNF {
 					// return our satisfied clique from our graph that we obtained
 					ArrayList<Integer> cliqueList;
 
+					//if statement checks to see if there are greater than 19 clauses.
+					//if so then it will run the second if statement which uses a different method
 					if (numClauses < 20) {
 						cliqueList = solveClique.findMaxClique(graph, numClauses);
 					} else {
@@ -138,18 +140,35 @@ public class solve3CNF {
 		return graph;
 	}
 
+	
+	
+	/*
+	 * method for finding a clique in a densely packed graph
+	 * **will run infinitely if no clique exists**
+	 * 
+	 * @param k: number of clauses
+	 * @param graph: the graph you want to check for clique
+	 * 
+	 * returns an int list which are the vertices of the clique
+	 */
 	public static ArrayList<Integer> denseGraphCliqueFinder(int k, Graph graph) {
 
-
+		//get the matrix
 		int[][] matrix = graph.getMatrix();
 
+		//infinite for loop
 		for (;;) {
 			ArrayList<Integer> vertexArray = new ArrayList<Integer>();
 
+			//generate array of random integers to represent vertex from each clause
 			for (int i = 2; i <= k * 3; i = i + 3) {
 				vertexArray.add(generateRandomIntIntRange(i - 2, i));
 			}
+			
 
+			//outer loop which gets broken if it encounters a 0 (not a clique)
+			//	but returns the list of vertices otherwise (graph contains all 1's)
+			//	which means it is a clique
 			GRAPH_CHECK: for (;;) {
 				for (int i = 0; i < vertexArray.size(); i++) {
 					for (int j = 0; j < vertexArray.size(); j++) {
@@ -164,6 +183,7 @@ public class solve3CNF {
 
 	}
 
+	//generates random integer
 	public static int generateRandomIntIntRange(int min, int max) {
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
