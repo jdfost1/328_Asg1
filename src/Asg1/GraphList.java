@@ -44,7 +44,7 @@ public class GraphList {
 
 				// if there is 0 rows.. then we do not need to read in any lines
 				if (matrixSize == 0) {
-					// System.out.println("matrix size = 0");
+
 					break;
 				} // end of if statement
 

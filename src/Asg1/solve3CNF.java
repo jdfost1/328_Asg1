@@ -11,7 +11,7 @@ public class solve3CNF {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String filename = "cnfs2019.txt";
+		String filename = args[0];
 		BufferedReader fin;
 		String currentLine;
 		ArrayList<Graph> graphList = new ArrayList<Graph>();
@@ -69,7 +69,7 @@ public class solve3CNF {
 					Graph graph = CNFtoClique(valueArray);
 
 					// return our satisfied clique from our graph that we obtained
-					ArrayList<Integer> cliqueList = solveClique.findMaxClique(graph);
+					ArrayList<Integer> cliqueList = solveClique.findMaxClique(graph, numClauses);
 
 					time = System.currentTimeMillis() - time;
 
