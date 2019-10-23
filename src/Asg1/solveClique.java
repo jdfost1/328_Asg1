@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class solveClique {
+	
+	//variable to hold time elapsed for each maxClique method call
 	static long ms;
 
 	// Driver code to find the max clique in each graph from the input file
@@ -44,9 +46,10 @@ public class solveClique {
 		
 	}//end of helper method
 
-	
+	//recursive method to find max clique in a given graph
 	public static ArrayList<Integer> findMaxCliqueAlgorithm(ArrayList<Integer> clique, int row, Graph graph) {
 		
+		//get the size of the graph to iterate through the columns of the adjacency matrix
         int dimension = graph.size;
  
 		ArrayList<Integer> temp = new ArrayList<Integer>();
@@ -66,7 +69,7 @@ public class solveClique {
 			if (isClique) {
 				ArrayList<Integer> currentClique = new ArrayList<Integer>(clique);
 				currentClique.add(i);
-				temp = findMaxCliqueAlgorithm(currentClique, i + 1, graph);
+				temp = findMaxCliqueAlgorithm(currentClique, i +1, graph);
 
 				if (temp.size() > maxClique.size()) { maxClique = temp;}
 			}//end of outer if statement

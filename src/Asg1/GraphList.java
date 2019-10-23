@@ -28,7 +28,7 @@ public class GraphList {
 							// matrix
 
 		// these counter variables are used to print a specified number of graphs in the
-		// graph list for testing
+		// graph list for testing (FOR TESTING ONLY)
 		int counter = 0;
 		int maxCounter = 5;// set number of graphs to print from list of graphs
 
@@ -110,7 +110,7 @@ public class GraphList {
 
 		// for loop that goes through each graph of the list
 		for (int i = 0; i < graphList.size(); i++) {
-			Graph temp = graphList.get(i);
+			Graph temp = graphList.get(i); //variable not used?
 
 			int[][] matrix = graphList.get(i).getMatrix();
 			int size = graphList.get(i).getSize();
