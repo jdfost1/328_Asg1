@@ -46,8 +46,10 @@ public class GraphList {
 				int matrixSize = Integer.parseInt(firstChar);
 
 
+
 				// if there is 0 rows.. then we do not need to read in any lines
 				if (matrixSize == 0) {
+
 					break;
 				} // end of if statement
 
@@ -66,7 +68,7 @@ public class GraphList {
 
 					} // end of inner for loop
 				} // end of outer for loop
-				
+
 				counter++;
 
 				// create new graph with adjacency matrix parsed from input file and add to list

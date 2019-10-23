@@ -11,8 +11,11 @@ public class solveClique {
 	// Driver code to find the max clique in each graph from the input file
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
-        //create new graph list object with input file as argument
-		GraphList allGraphs = new GraphList(args[0]);
+		//set filename with input from command line
+		String fileName = args[0];
+		
+        //create new graph list object with the given input file
+		GraphList allGraphs = new GraphList(fileName);
 		
 		System.out.println("* Max Cliques in graphs in graphs2019.txt\n" + 
 				           "   (|V|,|E|) Cliques (size, ms used)");
@@ -29,7 +32,7 @@ public class solveClique {
 			long startTime = System.currentTimeMillis();
 
 			//call method to find max clique in graph and return the list of vertices
-			cliqueList = findMaxClique(allGraphs.graphList.get(i),10);
+			cliqueList = findMaxClique(allGraphs.graphList.get(i));
 			
 			//end timer
 			ms = System.currentTimeMillis() - startTime;
@@ -49,10 +52,10 @@ public class solveClique {
 		
 	}//end of helper method
 	
-	//take graph and pass into recursive algorithm to return array list of max clique
+	//overloaded method that is used to specify the max clique to search for (useful for reducing CNF)
 		public static ArrayList<Integer> findMaxClique(Graph graph, int k){
 			
-			//set the specified clique to search for
+			//set k so that we can access it later in recursive method
 			graph.setK(k);
 		//pass in a new array list to hold clique (this argument is needed for recursion), initialize second arg to 0 (needed for recursion as well)
 			return findMaxCliqueAlgorithm(new ArrayList<Integer>(),0, graph);
