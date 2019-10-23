@@ -27,7 +27,7 @@ public class solve3CNF {
 			// from input file
 			fin = new BufferedReader(reader);
 
-			// while loop to preform conversion for each given boolean formula
+			// while loop to perform conversion for each given boolean formula
 			
 			System.out.println("\n* Solve 3CNF in cnfs2019.txt: (reduced to K-Clique) *\r\n" + 
 							   "                    x: can be either T or F\r");
@@ -63,7 +63,7 @@ public class solve3CNF {
 					// determines number of clauses
 					int numClauses = valueArray.size() / 3;
 
-					// convert 3CNF to graoh and assign to variable
+					// convert 3CNF to graph and assign to variable
 					Graph graph = CNFtoClique(valueArray);
 
 					// return our satisfied clique from our graph that we obtained
