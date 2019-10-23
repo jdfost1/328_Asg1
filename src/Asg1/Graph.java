@@ -5,11 +5,9 @@ public class Graph {
 
 	private int size;
 	private int numEdges;
-	private int k;
+	private int k; //member that helps to specify if you want to search for a k clique instead of max
 
-	
-
-	int[][] matrix; // symmetric adjacency matrix n*n
+	private int[][] matrix; // symmetric adjacency matrix n*n
 
 	// constructor with size and adjacency matrix as arguments
 	public Graph(int size, int[][] matrix) {

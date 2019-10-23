@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class solveClique {
 	
 	//variable to hold time elapsed for each maxClique method call
-	static long ms;
+	private static long ms;
 
 	// Driver code to find the max clique in each graph from the input file
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
         //create new graph list object with input file as argument
-		GraphList allGraphs = new GraphList("graphs2019.txt");
+		GraphList allGraphs = new GraphList(args[0]);
 		
 		System.out.println("* Max Cliques in graphs in graphs2019.txt\n" + 
 				           "   (|V|,|E|) Cliques (size, ms used)");
@@ -80,7 +80,7 @@ public class solveClique {
 			boolean isClique = true;
 			
 			for (int j = 0; j < clique.size(); j++) {
-				if (graph.matrix[clique.get(j)][i] != 1) {
+				if (graph.getMatrix()[clique.get(j)][i] != 1) {
 					isClique = false;
 				}
 			}//end of inner for loop
@@ -94,7 +94,7 @@ public class solveClique {
 				if (temp.size() > maxClique.size()) { maxClique = temp;}
 				
 				//if k is specified for the graph and the current max clique is equal to k.. no need to keep search. end loop
-		        if(k > 0 && k == maxClique.size()) { break;}
+		        if(k >= 0 && k == maxClique.size()) { break;}
 			}//end of outer if statement
 		} // end of outer loop
 		
