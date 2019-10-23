@@ -12,7 +12,7 @@ public class solveClique {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
         //create new graph list object with input file as argument
-		GraphList allGraphs = new GraphList(args[0]);
+		GraphList allGraphs = new GraphList("graphs2019.txt");
 		
 		System.out.println("* Max Cliques in graphs in graphs2019.txt\n" + 
 				           "   (|V|,|E|) Cliques (size, ms used)");

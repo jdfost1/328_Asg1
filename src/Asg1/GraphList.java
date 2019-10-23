@@ -47,13 +47,13 @@ public class GraphList {
 				int matrixSize = Integer.parseInt(firstChar);
 
 				// used for testing
-				if (counter < maxCounter) {
-					System.out.println("Matrix Size: " + firstChar);
-				}
+//				if (counter < maxCounter) {
+//					System.out.println("Matrix Size: " + firstChar);
+//				}
 
 				// if there is 0 rows.. then we do not need to read in any lines
 				if (matrixSize == 0) {
-					System.out.println("matrix size = 0");
+					//System.out.println("matrix size = 0");
 					break;
 				} // end of if statement
 
@@ -63,25 +63,25 @@ public class GraphList {
 				// for loop to read input file and parse into graph
 				for (int j = 0; j < matrixSize; j++) {
 					String line = bufferedReader.readLine().replaceAll("\\s+", "");
-					if (counter < maxCounter) {
-						System.out.println("\nLine " + (j + 1) + ": " + line);
-					}
+//					if (counter < maxCounter) {
+//						System.out.println("\nLine " + (j + 1) + ": " + line);
+//					}
 					for (int i = 0; i < matrixSize; i++) {
 
 						adjacencyMatrix[j][i] = Integer.parseInt(line.charAt(i) + "");
 
 						// only print the matrixes of first 5 for testing
-						if (counter < maxCounter)
-							System.out.println("Filled in cell [" + j + "]" + "[" + i + "] in matrix with value of "
-									+ adjacencyMatrix[j][i]);
+//						if (counter < maxCounter)
+//							System.out.println("Filled in cell [" + j + "]" + "[" + i + "] in matrix with value of "
+//									+ adjacencyMatrix[j][i]);
 
 					} // end of inner for loop
 				} // end of outer for loop
 
-				// print method for testing only
-				if (counter < maxCounter) {
-					System.out.println("Filling of matrix complete \n\n");
-				}
+//				// print method for testing only
+//				if (counter < maxCounter) {
+//					System.out.println("Filling of matrix complete \n\n");
+//				}
 				counter++;
 
 				// create new graph with adjacency matrix parsed from input file and add to list
