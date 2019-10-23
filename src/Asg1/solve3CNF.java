@@ -14,7 +14,6 @@ public class solve3CNF {
 		String filename = args[0];
 		BufferedReader fin;
 		String currentLine;
-		ArrayList<Graph> graphList = new ArrayList<Graph>();
 		int count = 1;
 
 		try {

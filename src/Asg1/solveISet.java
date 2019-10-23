@@ -9,10 +9,10 @@ public class solveISet {
 	// main method
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		String filename = args[0];
 		try {
 			// initiates new object
-			GraphList graphList = new GraphList("graphs2019.txt");
+			GraphList graphList = new GraphList(filename);
 
 			// invert graph
 			List<Graph> inverseGraphs = graphList.invertGraphs();
