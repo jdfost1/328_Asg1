@@ -25,32 +25,32 @@ public class solve3CNF {
 			// use buffered reader object to help efficiently read in characters and lines
 			// from input file
 			fin = new BufferedReader(reader);
-			//while ((currentLine = fin.readLine()) != null) {
-				currentLine = fin.readLine();
-				// read line and split into an array
-				String[] line = currentLine.split("\\s");
+			// while ((currentLine = fin.readLine()) != null) {
+			currentLine = fin.readLine();
+			// read line and split into an array
+			String[] line = currentLine.split("\\s");
 
-				// Initialize an arraylist and take first value from line to know number of
-				// variables
-				ArrayList<Integer> valueArray = new ArrayList<Integer>();
-				int n = Integer.parseInt(line[0]);
+			// Initialize an arraylist and take first value from line to know number of
+			// variables
+			ArrayList<Integer> valueArray = new ArrayList<Integer>();
+			int n = Integer.parseInt(line[0]);
 
-				if (n != 0) {
-					System.out.println("Number of variables = " + n);
-					for (int i = 1; i < line.length; i++) {
-						valueArray.add(Integer.parseInt(line[i]));
-					}
-					System.out.println("Number of clauses = " + (valueArray.size() / 3));
-
-					for (int i = 0; i < valueArray.size(); i++) {
-						System.out.print(valueArray.get(i)+",");
-					}
-					System.out.println();
-					
-					Graph graph = CNFtoClique(valueArray);
-					graph.printMatrix();
+			if (n != 0) {
+				System.out.println("Number of variables = " + n);
+				for (int i = 1; i < line.length; i++) {
+					valueArray.add(Integer.parseInt(line[i]));
 				}
-			//}
+				System.out.println("Number of clauses = " + (valueArray.size() / 3));
+
+				for (int i = 0; i < valueArray.size(); i++) {
+					System.out.print(valueArray.get(i) + ",");
+				}
+				System.out.println();
+
+				Graph graph = CNFtoClique(valueArray);
+				graph.printMatrix();
+			}
+			// }
 
 		} catch (IOException e) {
 			// TODO: handle exception
@@ -75,9 +75,9 @@ public class solve3CNF {
 					matrix[i][j] = 1;
 			}
 		}
-		
+
 		graph = new Graph(size, matrix);
-		
+
 		return graph;
 	}
 }

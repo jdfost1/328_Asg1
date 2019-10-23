@@ -12,7 +12,7 @@ public class solveClique {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
         //create new graph list object with input file as argument
-		GraphList allGraphs = new GraphList("graphs2019.txt");
+		GraphList allGraphs = new GraphList(args[0]);
 		
 		//iterate through the graphs in the graph list and call the findMaxClique on each graph
 		for (int i = 0; i < allGraphs.graphList.size(); i++) {
@@ -38,7 +38,7 @@ public class solveClique {
 
 	}// end of main method
 	
-	//take graph and pass into recursive algorithm to find max clique
+	//take graph and pass into recursive algorithm to return array list of max clique
 	public static ArrayList<Integer> findMaxClique(Graph graph){
 		
 	//pass in a new array list to hold clique (this argument is needed for recursion), initialize second arg to 0 (needed for recursion as well)

@@ -10,32 +10,26 @@ public class solveISet {
 		// TODO Auto-generated method stub
 
 		try {
-			//initiates new object
+			// initiates new object
 			GraphList graphList = new GraphList("graphs2019.txt");
-			
-			//invert graph
+
+			// invert graph
 			List<Graph> inverseGraphs = graphList.invertGraphs();
 
-			
-			for (int i = 0; i<inverseGraphs.size(); i++) {
-				
+			for (int i = 0; i < inverseGraphs.size(); i++) {
+
 				System.out.println();
 				System.out.println("Graph " + i);
-				
-				
-				inverseGraphs.get(i).printMatrix();
-				
-				//here goes the clique method which uses the inverted graph
-				
-				}
-			
 
-			
-			
-			
+				inverseGraphs.get(i).printMatrix();
+
+				// here goes the clique method which uses the inverted graph
+
+			}
+
 		} catch (IOException e) {
 			System.out.println("file error");
 		}
 	}
-	
+
 }

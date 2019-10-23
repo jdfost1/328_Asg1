@@ -15,19 +15,21 @@ public class Graph {
 		this.matrix = matrix;
 	}// end of constructor
 
-	// method for printing the matrix
+	// method for printing the matrix in the graph object
 	public void printMatrix() {
 		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {System.out.print(matrix[i][j]);}
+			for (int j = 0; j < size; j++) {
+				System.out.print(matrix[i][j]);
+			}
 			System.out.println();
-		}//end of for loop
+		} // end of for loop
 	}
 
 	// method to count the total number of edges in a graph
 	public int countEdges() {
 
 		int numEdges = 0;
-		
+
 		for (int i = 0; i < size; i++) {
 			for (int j = i + 1; j < matrix[i].length; j++) {
 				if (matrix[i][j] == 1)
