@@ -12,9 +12,7 @@ public class GraphList {
 
 	// list that contains all the graphs
 	List<Graph> graphList;
-
-	// constructor that parses the graphs from the given input file and creates an
-	// array list of graphs
+	
 	public GraphList(String filename) throws NumberFormatException, IOException {
 		this.graphList = new ArrayList<Graph>();
 		parseGraphs(filename);
