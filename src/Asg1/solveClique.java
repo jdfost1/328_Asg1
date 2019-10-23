@@ -21,9 +21,9 @@ public class solveClique {
 				           "   (|V|,|E|) Cliques (size, ms used)");
 		
 		//iterate through the graphs in the graph list and call the findMaxClique on each graph
-		for (int i = 0; i < allGraphs.graphList.size(); i++) {
+		for (int i = 0; i < allGraphs.getGraphList().size(); i++) {
 
-			int graphSize = allGraphs.graphList.get(i).getSize();
+			int graphSize = allGraphs.getGraphList().get(i).getSize();
 
 			// create an integer list to hold the set of vertices found in the max clique for this graph
 			ArrayList<Integer> cliqueList = new ArrayList<Integer>();
@@ -32,13 +32,13 @@ public class solveClique {
 			long startTime = System.currentTimeMillis();
 
 			//call method to find max clique in graph and return the list of vertices
-			cliqueList = findMaxClique(allGraphs.graphList.get(i));
+			cliqueList = findMaxClique(allGraphs.getGraphList().get(i));
 			
 			//end timer
 			ms = System.currentTimeMillis() - startTime;
 
 			// print the max clique results for this graph
-			System.out.println("G" + (i + 1) + " (" + graphSize + ", " + allGraphs.graphList.get(i).countEdges() + ") "
+			System.out.println("G" + (i + 1) + " (" + graphSize + ", " + allGraphs.getGraphList().get(i).countEdges() + ") "
 					+ cliqueList.toString() + "(size=" + cliqueList.size() + ", " + ms + " ms)");
 		} // end of for loop
 		System.out.println("***");
