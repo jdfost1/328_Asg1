@@ -13,6 +13,7 @@ public class GraphList {
 	// list that contains all the graphs
 	List<Graph> graphList;
 	
+	//constructor to create graph list object with given input file
 	public GraphList(String filename) throws NumberFormatException, IOException {
 		this.graphList = new ArrayList<Graph>();
 		parseGraphs(filename);
@@ -22,11 +23,10 @@ public class GraphList {
 	// method to parse input file into an array list of graphs
 	public void parseGraphs(String filename) throws NumberFormatException, IOException {
 		BufferedReader bufferedReader;
-		String firstChar;// first char read in to tell us the number of rows/cols in graph/adjacency
-							// matrix
+		String firstChar;// first char read in to tell us the number of rows/cols in graph/adjacency  matrix
 
 		// these counter variables are used to print a specified number of graphs in the
-		// graph list for testing
+		// graph list for testing (FOR TESTING ONLY)
 		int counter = 0;
 		int maxCounter = 5;// set number of graphs to print from list of graphs
 
@@ -108,7 +108,7 @@ public class GraphList {
 
 		// for loop that goes through each graph of the list
 		for (int i = 0; i < graphList.size(); i++) {
-			Graph temp = graphList.get(i);
+			Graph temp = graphList.get(i); //variable not used?
 
 			int[][] matrix = graphList.get(i).getMatrix();
 			int size = graphList.get(i).getSize();

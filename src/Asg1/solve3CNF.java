@@ -27,10 +27,11 @@ public class solve3CNF {
 			// from input file
 			fin = new BufferedReader(reader);
 
+
 			// while loop to perform conversion for each given boolean formula
 			
 			System.out.println("\n* Solve 3CNF in cnfs2019.txt: (reduced to K-Clique) *\r\n" + 
-							   "                    x: can be either T or F\r");
+							   "                    x: can be either T or F");
 			
 			whileloop: while ((currentLine = fin.readLine()) != null) {
 				long time = System.currentTimeMillis();
@@ -38,10 +39,11 @@ public class solve3CNF {
 				// read line and split into an array
 				String[] line = currentLine.split("\\s");
 
-				// Initialize an arraylist and take first value from line to know number of
-				// variables
-				ArrayList<Integer> valueArray = new ArrayList<Integer>();
-				int n = Integer.parseInt(line[0]);
+			// Initialize an arraylist and take first value from line to know number of
+			// variables
+			ArrayList<Integer> valueArray = new ArrayList<Integer>();
+			int n = Integer.parseInt(line[0]);
+
 
 				ArrayList<String> variableValue = new ArrayList<String>();
 				for (int i = 0; i < n; i++) {
@@ -93,7 +95,9 @@ public class solve3CNF {
 						}
 						System.out.println("(" + time + "ms)");
 					}
+
 				}
+
 
 				count++;
 			}

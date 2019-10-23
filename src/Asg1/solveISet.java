@@ -11,11 +11,12 @@ public class solveISet {
 		// TODO Auto-generated method stub
 
 		try {
-			//initiates new object
+			// initiates new object
 			GraphList graphList = new GraphList("graphs2019.txt");
-			
-			//invert graph
+
+			// invert graph
 			List<Graph> inverseGraphs = graphList.invertGraphs();
+
 
 			System.out.println("\n* Max Independent Sets in graphs in graphs2019.txt : (reduced to K-Clique) *\r\n" + 
 					"      (|V|,|E|) Independent Set (size, ms used)");
@@ -42,14 +43,11 @@ public class solveISet {
 						+ cliqueList.toString() + "(size=" + cliqueList.size() + ", " + ms + " ms)");
 				
 				}
-			
 
-			
-			
-			
+
 		} catch (IOException e) {
 			System.out.println("file error");
 		}
 	}
-	
+
 }
