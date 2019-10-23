@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class solve3CNF {
 
@@ -27,23 +28,21 @@ public class solve3CNF {
 			// from input file
 			fin = new BufferedReader(reader);
 
-
 			// while loop to perform conversion for each given boolean formula
-			
-			System.out.println("\n* Solve 3CNF in cnfs2019.txt: (reduced to K-Clique) *\r\n" + 
-							   "                    x: can be either T or F");
-			
+
+			System.out.println("\n* Solve 3CNF in cnfs2019.txt: (reduced to K-Clique) *\r\n"
+					+ "                    x: can be either T or F");
+
 			whileloop: while ((currentLine = fin.readLine()) != null) {
 				long time = System.currentTimeMillis();
 
 				// read line and split into an array
 				String[] line = currentLine.split("\\s");
 
-			// Initialize an arraylist and take first value from line to know number of
-			// variables
-			ArrayList<Integer> valueArray = new ArrayList<Integer>();
-			int n = Integer.parseInt(line[0]);
-
+				// Initialize an arraylist and take first value from line to know number of
+				// variables
+				ArrayList<Integer> valueArray = new ArrayList<Integer>();
+				int n = Integer.parseInt(line[0]);
 
 				ArrayList<String> variableValue = new ArrayList<String>();
 				for (int i = 0; i < n; i++) {
@@ -51,9 +50,10 @@ public class solve3CNF {
 				}
 
 				// stop reading if you hit a 0
-				if (n == 0)
+				if (n == 0) {
+					System.out.println("***\nDone!");
 					break whileloop;
-
+				}
 				// makes sure that value is not 0 just in case
 				if (n != 0) {
 
@@ -69,7 +69,14 @@ public class solve3CNF {
 					Graph graph = CNFtoClique(valueArray);
 
 					// return our satisfied clique from our graph that we obtained
-					ArrayList<Integer> cliqueList = solveClique.findMaxClique(graph, numClauses);
+					ArrayList<Integer> cliqueList;
+
+					if (numClauses < 20) {
+						cliqueList = solveClique.findMaxClique(graph, numClauses);
+					} else {
+
+						cliqueList = denseGraphCliqueFinder(numClauses, graph);
+					}
 
 					time = System.currentTimeMillis() - time;
 
@@ -97,7 +104,6 @@ public class solve3CNF {
 					}
 
 				}
-
 
 				count++;
 			}
@@ -131,5 +137,36 @@ public class solve3CNF {
 		graph = new Graph(size, matrix);
 
 		return graph;
+	}
+
+	public static ArrayList<Integer> denseGraphCliqueFinder(int k, Graph graph) {
+
+
+		int[][] matrix = graph.getMatrix();
+
+		for (;;) {
+			ArrayList<Integer> vertexArray = new ArrayList<Integer>();
+
+			for (int i = 2; i <= k * 3; i = i + 3) {
+				vertexArray.add(generateRandomIntIntRange(i - 2, i));
+			}
+
+			GRAPH_CHECK: for (;;) {
+				for (int i = 0; i < vertexArray.size(); i++) {
+					for (int j = 0; j < vertexArray.size(); j++) {
+						if (matrix[vertexArray.get(i)][vertexArray.get(j)] == 0)
+							break GRAPH_CHECK;
+					}
+				}
+				return vertexArray;
+			}
+
+		}
+
+	}
+
+	public static int generateRandomIntIntRange(int min, int max) {
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
 	}
 }
