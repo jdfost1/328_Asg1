@@ -12,7 +12,7 @@ public class solveClique {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
         //create new graph list object with input file as argument
-		GraphList allGraphs = new GraphList(args[0]);
+		GraphList allGraphs = new GraphList("graphs2019.txt");
 		
 		System.out.println("* Max Cliques in graphs in graphs2019.txt\n" + 
 				           "   (|V|,|E|) Cliques (size, ms used)");
@@ -29,7 +29,7 @@ public class solveClique {
 			long startTime = System.currentTimeMillis();
 
 			//call method to find max clique in graph and return the list of vertices
-			cliqueList = findMaxClique(allGraphs.graphList.get(i));
+			cliqueList = findMaxClique(allGraphs.graphList.get(i),10);
 			
 			//end timer
 			ms = System.currentTimeMillis() - startTime;
@@ -48,17 +48,33 @@ public class solveClique {
 		return findMaxCliqueAlgorithm(new ArrayList<Integer>(),0, graph);
 		
 	}//end of helper method
+	
+	//take graph and pass into recursive algorithm to return array list of max clique
+		public static ArrayList<Integer> findMaxClique(Graph graph, int k){
+			
+			//set the specified clique to search for
+			graph.setK(k);
+		//pass in a new array list to hold clique (this argument is needed for recursion), initialize second arg to 0 (needed for recursion as well)
+			return findMaxCliqueAlgorithm(new ArrayList<Integer>(),0, graph);
+			
+		}//end of helper m
 
 	//recursive method to find max clique in a given graph
 	public static ArrayList<Integer> findMaxCliqueAlgorithm(ArrayList<Integer> clique, int row, Graph graph) {
 		
 		//get the size of the graph to iterate through the columns of the adjacency matrix
-        int dimension = graph.size;
+        int dimension = graph.getSize();
+        
+        
+        //first check to see if the graph object has a specified clique to search for before starting the algorithm
+       int k = graph.getK();
+       
  
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		ArrayList<Integer> maxClique = new ArrayList<Integer>();
 		
 		maxClique = clique;
+		 
 
 		for (int i = row; i < dimension; i++) {
 			boolean isClique = true;
@@ -73,8 +89,12 @@ public class solveClique {
 				ArrayList<Integer> currentClique = new ArrayList<Integer>(clique);
 				currentClique.add(i);
 				temp = findMaxCliqueAlgorithm(currentClique, i +1, graph);
+				
 
 				if (temp.size() > maxClique.size()) { maxClique = temp;}
+				
+				//if k is specified for the graph and the current max clique is equal to k.. no need to keep search. end loop
+		        if(k > 0 && k == maxClique.size()) { break;}
 			}//end of outer if statement
 		} // end of outer loop
 		

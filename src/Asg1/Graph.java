@@ -3,8 +3,11 @@ package Asg1;
 //class to create graph objects
 public class Graph {
 
-	int size;
-	int numEdges;
+	private int size;
+	private int numEdges;
+	private int k;
+
+	
 
 	int[][] matrix; // symmetric adjacency matrix n*n
 
@@ -13,6 +16,7 @@ public class Graph {
 
 		this.size = size;
 		this.matrix = matrix;
+		this.k = -1;
 	}// end of constructor
 
 	// method for printing the matrix in the graph object
@@ -55,6 +59,21 @@ public class Graph {
 
 	public int[][] getMatrix() {
 		return matrix;
+	}
+	public int getNumEdges() {
+		return numEdges;
+	}
+
+	public void setNumEdges(int numEdges) {
+		this.numEdges = numEdges;
+	}
+
+	public int getK() {
+		return k;
+	}
+
+	public void setK(int k) {
+		this.k = k;
 	}
 
 }// end of class
