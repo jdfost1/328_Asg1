@@ -1,6 +1,7 @@
 package Asg1;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class solveISet {
@@ -16,16 +17,29 @@ public class solveISet {
 			//invert graph
 			List<Graph> inverseGraphs = graphList.invertGraphs();
 
-			
+			System.out.println("\n* Max Independent Sets in graphs in graphs2019.txt : (reduced to K-Clique) *\r\n" + 
+					"      (|V|,|E|) Independent Set (size, ms used)");
 			for (int i = 0; i<inverseGraphs.size(); i++) {
 				
-				System.out.println();
-				System.out.println("Graph " + i);
+				long ms;
 				
+				int graphSize = inverseGraphs.get(i).getSize();
+
+				// create an integer list to hold the set of vertices found in the max clique for this graph
+				ArrayList<Integer> cliqueList;
 				
-				inverseGraphs.get(i).printMatrix();
+				//start timer
+				long startTime = System.currentTimeMillis();
+
+				//call method to find max clique in graph and return the list of vertices
+				cliqueList = solveClique.findMaxClique(inverseGraphs.get(i));
 				
-				//here goes the clique method which uses the inverted graph
+				//end timer
+				ms = System.currentTimeMillis() - startTime;
+
+				// print the max clique results for this graph
+				System.out.println("G" + (i + 1) + " (" + graphSize + ", " + inverseGraphs.get(i).countEdges() + ") "
+						+ cliqueList.toString() + "(size=" + cliqueList.size() + ", " + ms + " ms)");
 				
 				}
 			

@@ -12,6 +12,9 @@ public class solveClique {
         //create new graph list object with input file as argument
 		GraphList allGraphs = new GraphList("graphs2019.txt");
 		
+		System.out.println("* Max Cliques in graphs in graphs2019.txt\n" + 
+				           "   (|V|,|E|) Cliques (size, ms used)");
+		
 		//iterate through the graphs in the graph list and call the findMaxClique on each graph
 		for (int i = 0; i < allGraphs.graphList.size(); i++) {
 
@@ -33,7 +36,7 @@ public class solveClique {
 			System.out.println("G" + (i + 1) + " (" + graphSize + ", " + allGraphs.graphList.get(i).countEdges() + ") "
 					+ cliqueList.toString() + "(size=" + cliqueList.size() + ", " + ms + " ms)");
 		} // end of for loop
-
+		System.out.println("***");
 	}// end of main method
 	
 	//take graph and pass into recursive algorithm to find max clique
